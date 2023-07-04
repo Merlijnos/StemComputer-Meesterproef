@@ -43,12 +43,18 @@ stemmenTellenButton.innerText = "Stemmen tellen";
 stemmenTellenButton.addEventListener("click", function() {
     stemgedeelte.innerHTML = "";
     let resultaat = document.createElement("div");
-    let winnaar = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
-    let winnaarTekst = document.createTextNode("Partij met de meeste stemmen: " + winnaar + " (" + votes[winnaar] + ")");
-    resultaat.appendChild(winnaarTekst);
-    let anderePartijen = document.createElement("il");
+    let winnaars = [];
+    let maxStemmen = Math.max(...Object.values(votes));
     for (let partij in votes) {
-        if (partij !== winnaar) {
+        if (votes[partij] === maxStemmen) {
+            winnaars.push(partij);
+        }
+    }
+    let winnaarTekst = document.createTextNode("Partij(en) met de meeste stemmen: " + winnaars.join(", ") + " (" + maxStemmen + " stemmen)");
+    resultaat.appendChild(winnaarTekst);
+    let anderePartijen = document.createElement("ul");
+    for (let partij in votes) {
+        if (!winnaars.includes(partij)) {
             let partijTekst = document.createTextNode(partij + " " + votes[partij] + "");
             let partijItem = document.createElement("li");
             partijItem.appendChild(partijTekst);
