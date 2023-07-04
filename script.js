@@ -6,6 +6,7 @@ let test = document.createTextNode('Aantal partijen: ' + partijen.length);
 
 let header = document.createElement("header");
 header.style.backgroundColor = "lightblue";
+
 let headerText = document.createTextNode("Kies hier uw partij");
 header.appendChild(headerText);
 container.appendChild(header);
@@ -36,7 +37,6 @@ function addPartij() {
     stemgedeelte.appendChild(button);
     addPartij();
 }
-
 addPartij();
 let stemmenTellenButton = document.createElement("button");
 stemmenTellenButton.innerText = "Stemmen tellen";
@@ -63,6 +63,7 @@ stemmenTellenButton.addEventListener("click", function() {
     }
     resultaat.appendChild(anderePartijen);
     stemgedeelte.appendChild(resultaat);
+    
     let nieuweStemmenTellenButton = document.createElement("button");
     nieuweStemmenTellenButton.innerText = "Opnieuw stemmen";
     nieuweStemmenTellenButton.addEventListener("click", function() {
