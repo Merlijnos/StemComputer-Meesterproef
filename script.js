@@ -38,7 +38,6 @@ function addPartij() {
 }
 
 addPartij();
-
 let stemmenTellenButton = document.createElement("button");
 stemmenTellenButton.innerText = "Stemmen tellen";
 stemmenTellenButton.addEventListener("click", function() {
